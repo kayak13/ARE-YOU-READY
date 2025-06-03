@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Could You Be Charging Luxury Prices?</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: #FAF9F6;
+      color: #2D2D2D;
+      padding: 40px;
+      max-width: 700px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    button {
+      background: #2D2C2A;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1e1d1b;
+    }
+    #result {
+      margin-top: 30px;
+      padding: 20px;
+      background: #EFEDE9;
+      border-left: 5px solid #C6A57B;
+    }
+    a.cta {
+      display: inline-block;
+      margin-top: 20px;
+      background: #2D2C2A;
+      color: white;
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Could You Be Charging Luxury Prices?</h1>
+  <p>Answer 6 quick questions to find out if you're sitting on a premium service — without the premium price tag.</p>
+
+  <form id="quiz">
+    <div class="question"><label><input type="checkbox" name="q1" /> Clients compliment my work more than average cleaners</label></div>
+    <div class="question"><label><input type="checkbox" name="q2" /> I often include extra touches or detail work without charging more</label></div>
+    <div class="question"><label><input type="checkbox" name="q3" /> I’ve lost jobs because of price, even after praise</label></div>
+    <div class="question"><label><input type="checkbox" name="q4" /> I have a solid system/process (even if not branded yet)</label></div>
+    <div class="question"><label><input type="checkbox" name="q5" /> I feel maxed out or stretched thin in my current setup</label></div>
+    <div class="question"><label><input type="checkbox" name="q6" /> I’m ready to grow, but I’m tired of doing it alone</label></div>
+
+    <button type="button" onclick="gradeQuiz()">See My Score</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    function gradeQuiz() {
+      const form = document.getElementById("quiz");
+      const answers = form.querySelectorAll("input[type=checkbox]");
+      let score = 0;
+      answers.forEach(input => {
+        if (input.checked) score++;
+      });
+
+      let result = document.getElementById("result");
+      result.innerHTML = "<h2>Your Score: " + score + " out of 6</h2>";
+
+      if (score <= 2) {
+        result.innerHTML += "<p>You’re building something good — but DomestiQ™ may be a step ahead of where you are. Keep going!</p>";
+      } else if (score <= 4) {
+        result.innerHTML += "<p>You’re likely undercharging or under-presenting a very strong offer. DomestiQ™ could help you scale and price with confidence.</p>";
+        result.innerHTML += '<a href="index.html" class="cta">Learn About DomestiQ™ Pro</a>';
+      } else {
+        result.innerHTML += "<p>You’re a perfect fit for premium pricing. The only thing missing is the structure and tools. This is what DomestiQ™ Pro gives you.</p>";
+        result.innerHTML += '<a href="index.html" class="cta">Apply to DomestiQ™ Pro Now</a>';
+      }
+    }
+  </script>
+
+</body>
+</html>
